@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+    <!-- Using Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            border-top: 3px solid #00c0ef;
+            /* Decorative top border */
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .btn-add {
+            background-color: #00a65a;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 3px;
+            float: right;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .btn-add:hover {
+            background-color: #008d4c;
+        }
+
+        /* Table Styles matching the screenshot */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            border: 1px solid #f4f4f4;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            /* Full grid borders */
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #fff;
+            color: #333;
+            font-weight: bold;
+            border-bottom: 2px solid #f4f4f4;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Buttons */
+        button {
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            /* Standard bootstrap padding */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 0 2px;
+            /* Tiny gap */
+            cursor: pointer;
+            border-radius: 4px;
+            /* Slight radius like screenshot */
+        }
+
+        .btn-edit {
+            background-color: #337ab7;
+            /* Specific Bootstrap Primary Blue */
+            border-color: #2e6da4;
+        }
+
+        .btn-edit:hover {
+            background-color: #286090;
+        }
+
+        .btn-delete {
+            background-color: #d9534f;
+            /* Specific Bootstrap Danger Red */
+            border-color: #d43f3a;
+        }
+
+        .btn-delete:hover {
+            background-color: #c9302c;
+        }
+
+        /* Image Thumbnail */
+        .user-thumb {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div style="overflow: hidden; padding-bottom: 10px;">
+            <span style="font-size: 22px; font-weight: bold;">Employee List</span>
+            <a href="index.html" class="btn-add">+ Add New</a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 60px;">Image</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Gender</th>
+                    <th style="width: 120px;">Action</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+                <!-- Data will be loaded here -->
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 20px;">Loading data...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Script loaded normally with version to force refresh -->
+    <script src="script.js?v=2"></script>
+    <script>
+        // Ensure data loads even if script.js works differently
+        if (typeof loadData === 'function') {
+            loadData();
+        } else {
+            // Retry after short delay in case of loading race condition
+            setTimeout(function () {
+                if (typeof loadData === 'function') loadData();
+            }, 500);
+        }
+    </script>
+</body>
+
+</html>
